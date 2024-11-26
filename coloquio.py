@@ -1,5 +1,5 @@
 def total_puntos(archivo):
-    
+    pilotos_puntos = []
     i = 0
     for linea in archivo:
         # if i == 1: 
@@ -10,9 +10,7 @@ def total_puntos(archivo):
         equipo = linea[12:52].strip()
         puntos = linea[52:].strip().split()
 
-        print(f"Piloto: {piloto}")
-        print(f"Equipo: {equipo}")
-
+        
         suma_puntos = 0
         for punto in puntos:
             try:
@@ -21,7 +19,16 @@ def total_puntos(archivo):
             except ValueError:
                 print(f"  Error al procesar el valor de puntos: {punto}")
 
-        print(f"Suma total de puntos: {suma_puntos}")
+        pilotos_puntos.append((piloto, suma_puntos))
+
+    for i in range(len(pilotos_puntos)):
+        for j in range(0, len(pilotos_puntos) - i - 1):
+            if pilotos_puntos[j][1] < pilotos_puntos[j + 1][1]: 
+                pilotos_puntos[j], pilotos_puntos[j + 1] = pilotos_puntos[j + 1], pilotos_puntos[j]
+
+    print("\nListado de pilotos con sus puntos (de mayor a menor):\n")
+    for piloto, puntos_totales in pilotos_puntos:
+        print(f"{piloto}: {puntos_totales} puntos")
         print("-------------------------------------------")
 
 
@@ -38,7 +45,7 @@ def total_puntos(archivo):
 
 #MENU
 while True:
-    opc= int(input("""             *********MENU*********
+    opc= int(input("""\n             *********MENU*********
     1. Listado total de puntos de cada piloto, de mayor a menor puntaje.
     0. Si desea salir ingrese (0).
     Ingrese una opcion: """))
