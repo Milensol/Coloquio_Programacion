@@ -33,36 +33,36 @@ def puntos_pilotos(archivo):
 
 
 
-def puntos_equipos(archivo):
-    equipos_puntos= []
-    for linea in archivo:
-        # if i == 1: 
-        #     break
-        # i = i + 1
+# def puntos_equipos(archivo):
+#     equipos_puntos= []
+#     for linea in archivo:
+#         # if i == 1: 
+#         #     break
+#         # i = i + 1
         
-        equipo = linea[12:52].strip()
-        puntos = linea[52:].strip().split()
+#         equipo = linea[12:52].strip()
+#         puntos = linea[52:].strip().split()
 
         
-        suma_puntos = 0
-        for punto in puntos:
-            try:
-                valor = int(punto)
-                suma_puntos += valor
-            except ValueError:
-                print(f"  Error al procesar el valor de puntos: {punto}")
+#         suma_puntos = 0
+#         for punto in puntos:
+#             try:
+#                 valor = int(punto)
+#                 suma_puntos += valor
+#             except ValueError:
+#                 print(f"  Error al procesar el valor de puntos: {punto}")
 
-        puntos_equipos.append((equipo, suma_puntos))
+#         puntos_equipos.append((equipo, suma_puntos))
 
-    for i in range(len(puntos_equipos)):
-        for j in range(0, len(puntos_equipos) - i - 1):
-            if puntos_equipos[j][1] < puntos_equipos[j + 1][1]: 
-                puntos_equipos[j], puntos_equipos[j + 1] = puntos_equipos[j + 1], puntos_equipos[j]
+#     for i in range(len(puntos_equipos)):
+#         for j in range(0, len(puntos_equipos) - i - 1):
+#             if puntos_equipos[j][1] < puntos_equipos[j + 1][1]: 
+#                 puntos_equipos[j], puntos_equipos[j + 1] = puntos_equipos[j + 1], puntos_equipos[j]
 
-    print("\nListado de pilotos con sus puntos (de mayor a menor):\n")
-    for equipo, puntos_totales in puntos_equipos:
-        print(f"{equipo}: {puntos_totales} puntos")
-        print("-------------------------------------------")
+#     print("\nListado de pilotos con sus puntos (de mayor a menor):\n")
+#     for equipo, puntos_totales in puntos_equipos:
+#         print(f"{equipo}: {puntos_totales} puntos")
+#         print("-------------------------------------------")
 
 
 
